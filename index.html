@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartu Ucapan untuk Pacar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffccf0;
+            overflow: hidden;
+            background-image: url('https://www.example.com/flower-background.png'), url('https://www.example.com/love-icon.png');
+            background-position: center, bottom right;
+            background-repeat: no-repeat, no-repeat;
+            background-size: 100px, 80px;
+            animation: backgroundMove 15s infinite linear;
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: center, bottom right; }
+            50% { background-position: left top, bottom right; }
+            100% { background-position: center, bottom right; }
+        }
+
+        .card {
+            width: 90%;
+            max-width: 350px;
+            background: linear-gradient(135deg, #ffffff, #ff99cc);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            display: none;
+            animation: bounceIn 1s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: translateY(50px); opacity: 0; }
+            50% { transform: translateY(-10px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .card.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid #ff66b2;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .card img:hover {
+            transform: scale(1.1);
+        }
+
+        .card h1 {
+            color: #ff66b2;
+            font-size: 26px;
+            margin: 10px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .card p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .card button {
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 48%;
+            margin: 5px 1%;
+            display: inline-block;
+        }
+
+        .card button:hover {
+            background-color: #ff3399;
+            transform: scale(1.05);
+        }
+
+        .card button:active {
+            transform: scale(0.95);
+        }
+
+        .card button.back-btn {
+            font-size: 16px;
+            padding: 12px 25px;
+        }
+
+        .heart-icon {
+            position: absolute;
+            font-size: 40px;
+            color: #ff66b2;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .heart-icon:nth-child(1) {
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 0s;
+        }
+
+        .heart-icon:nth-child(2) {
+            top: 50px;
+            left: 20%;
+            transform: translateX(-50%);
+            animation-delay: 0.5s;
+        }
+
+        .heart-icon:nth-child(3) {
+            top: 100px;
+            left: 70%;
+            transform: translateX(-50%);
+            animation-delay: 1s;
+        }
+
+        .heart-icon:nth-child(4) {
+            top: 120px;
+            left: 30%;
+            transform: translateX(-50%);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .card {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .card h1 {
+                font-size: 24px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+
+            .card button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .card button.back-btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card active" id="page1">
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <img src="nay1.jpg" alt="Foto Pacar">
+        <h1>Selamat Datang, Sayang!</h1>
+        <p>
+            Semoga website ini membuat kamu bahagia yah. 
+            Terima kasih telah menjadi bagian terbaik dalam hidupku. Aku sangat mencintaimu!❤️
+        </p>
+        <button onclick="nextPage(1)">Next →</button>
+    </div>
+
+    <div class="card" id="page2">
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <img src="nay2.jpg" alt="Foto Pacar">
+        <h1>Hari yang Indah!</h1>
+        <p>
+            Setiap detik bersamamu adalah kebahagiaan yang luar biasa. Aku bersyukur
+            karena kamu ada dalam hidupku. Aku akan selalu mencintaimu, hari ini, besok,
+            dan selamanya.❤️
+        </p>
+        <button onclick="nextPage(2)">Next →</button>
+    </div>
+
+    <div class="card" id="page3">
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <img src="nay3.jpg" alt="Foto Pacar">
+        <h1>Selalu Bersama</h1>
+        <p>
+            Tak ada yang lebih indah daripada berbagi hidup denganmu. Terima kasih
+            telah menjadi kekuatanku. Aku akan selalu mendampingimu, apapun yang terjadi.❤️
+        </p>
+        <button onclick="nextPage(3)">Next →</button>
+    </div>
+
+    <div class="card" id="page4">
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <div class="heart-icon">❤️</div>
+        <img src="albumfav.jpg" alt="Foto Pacar">
+        <h1>Semangat Terus</h1>
+        <p>
+            ga kerasa yah hubungan kita sudah mencapai 5 bulan, pada bulan maret tanggal 4 nanti akan menjadi bulan ke 6 ihihi. 
+            Oh ya semangat melaksanakan ibadah puasa yahh❤️
+        </p>
+        
+        <a href="hati.html"><button>Selesai</button></a>
+        <button class="back-btn" onclick="backToStart()">Kembali ←</button>
+    </div>
+
+    <script>
+        function nextPage(currentPage) {
+            var currentCard = document.getElementById("page" + currentPage);
+            var nextCard = document.getElementById("page" + (currentPage + 1));
+            currentCard.classList.remove("active");
+            nextCard.classList.add("active");
+        }
+
+        
+
+        function backToStart() {
+            var currentCard = document.querySelector('.card.active');
+            currentCard.classList.remove('active');
+            var firstCard = document.getElementById('page1');
+            firstCard.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
